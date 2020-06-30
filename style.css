@@ -1,0 +1,335 @@
+body {
+    margin: 0px;
+    font-family: "Source Code Pro", monospace;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    /* background: #141e30; */
+    /* fallback for old browsers */
+    /* background: -webkit-linear-gradient( to bottom, #243b55, #141e30); */
+    /* Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient( to right, #2b4563, #3576f0); */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: #444;
+    color: white;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-top: 15px;
+    font-size: large;
+    color: black;
+    background-color: white;
+    z-index: 1;
+}
+
+.navBarWrapper {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.nameWrapper {
+    padding: 8px 0px 0px 100px;
+    font-size: larger;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin: 10px 20px 0px 5px;
+}
+
+.navBarItems {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: center;
+    height: 45px;
+}
+
+.navBarItems>div {
+    margin: 10px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.navBarItems>div:hover {
+    border-bottom-color: black;
+}
+
+.navBarItems>div>a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* this is the Main section */
+
+.main {
+    margin-top: 100px;
+    font-size: small;
+    background-color: transparent;
+    color: white;
+}
+
+.mainContent {
+    margin: 10px;
+}
+
+.timeLineWrapper {
+    min-width: 200px;
+    padding: 5px;
+    padding-right: 15px;
+    margin: 10px;
+    flex: 2;
+    position: relative;
+    z-index: -1;
+}
+
+.timelineHeader {
+    font-size: large;
+    padding: 5px;
+}
+
+.leftTopCorner {
+    border-width: 5px 0px 0px 5px;
+    border-color: white;
+    border-style: solid;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    height: 50px;
+    width: 50px
+}
+
+.rightBottomCorner {
+    transform-origin: bottom right;
+    border-width: 0px 5px 5px 0px;
+    border-color: white;
+    border-style: solid;
+    position: absolute;
+    top: 29%;
+    left: 84%;
+    height: 50px;
+    width: 50px
+}
+
+.timeLineWrapper>ul {
+    margin: 0px;
+    padding-left: 20px;
+}
+
+.centerContent {
+    padding: 10px;
+    /* border: 1px solid grey; */
+    margin: 10px;
+    flex: 5;
+}
+
+
+/* this is where the footer begins */
+
+.footer {
+    margin: auto;
+    margin-top: 30px;
+    border-top: 1px solid grey;
+}
+
+.linksWrapper>ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px 5px 0px 5px;
+    list-style: none;
+}
+
+.linksWrapper>ul>li>a {
+    text-decoration: none;
+    color: white;
+}
+
+.logoItems {
+    display: grid;
+    grid-template-columns: 50px 50px;
+    grid-template-rows: 50px 50px;
+}
+
+.logoItem {
+    /* background-color: black; */
+    padding: 3px;
+}
+
+.content {
+    margin: auto;
+    width: 80%;
+}
+
+.bottomFooter{
+    background-color: white;
+    color: black
+}
+.bottomFooterItems {
+    padding: 30px 5px 30px 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.bottomFooterItem>a{
+    text-decoration: none;
+    color: black;
+    transition: 0.1s;
+}
+
+.bottomFooterItem>a:hover{
+    color: #888;
+}
+
+.lowerSpaceholder {
+    height: 30px;
+}
+
+
+/* about.html */
+
+.panelItems {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 30px;
+    column-gap: 30px;
+}
+
+.panelItem{
+    text-align: left;   
+}
+
+/* daten.html */
+
+.dataSettingsTop{
+    display: flex;
+    font-size: medium;
+    padding: 7px;
+    border-bottom: 1px grey solid;
+    align-items: center;
+    position: relative;
+    height: 37px;
+}
+.fa-cog {
+    color: white;
+  }
+
+.datePeriod{
+    padding-right: 30px;
+    width: 270px
+}
+/* changeDate */
+.changeDateWrapper{
+    display: flex;
+    border-radius: 2px;
+    background-color: white;
+    color: black;
+    user-select: none;
+}    
+.changeDateWrapper>div{
+    padding: 5px 0px 5px 0px;
+}
+.changeDateLeft{
+    border-right: 1px grey solid;
+    padding: 0px 7px 0px 5px;
+}
+.changeDateLeftWrapper:hover{
+    background-color: grey;
+    color: white;
+    border-radius: 2px 0px 0px 2px;
+}
+.changeDateRight{
+    padding: 0px 5px 0px 7px;
+}
+.changeDateRightWrapper:hover{
+    background-color: grey;
+    color: white;
+    border-radius: 0px 2px 2px 0px;
+}
+/* changeTimeFrame */
+.timeFrameSwitch{
+    display: flex;
+    border-radius: 2px;
+    background-color: white;
+    color: black;
+    margin: 0px 30px 0px 40px;
+    user-select: none;
+}
+.timeFrameSwitch>div{
+    padding: 5px 0px 5px 0px;
+}
+.daySwitchWrapper:hover{
+    background-color: grey;
+    border-radius: 2px 0px 0px 2px;
+    color: white;
+}
+.daySwitch{
+    border-right: 1px grey solid;
+    padding: 0px 7px 0px 5px;
+}
+.weekSwitchWrapper:hover{
+    background-color: grey;
+    border-radius: 0px;
+    color: white;
+}
+.weekSwitch{
+    border-right: 1px grey solid;
+    padding: 0px 7px 0px 7px;
+}
+.monthSwitchWrapper:hover{
+    background-color: grey;
+    border-radius: 0px 2px 2px 0px;
+    color: white;
+}
+.monthSwitch{
+    padding: 0px 5px 0px 7px;
+}
+/* refreshButton */
+.refreshButton{
+    position: absolute;
+    right: 0px;
+    right: 20;
+    background-color: white;
+    color: black;
+    padding: 5px 7px 5px 7px;
+    border-radius: 2px;
+}
+.refreshButton:hover{
+    background-color: grey;
+    color: white;
+}
+/* snapshot */
+.snapShotWrapper{
+    padding-top: 15px;
+}
+.snapShotItems{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.snapShotItem{
+    text-align: center;
+}
+.avgData{
+    font-size: large;
+}
+.dataType{
+    font-size: small;
+    color: grey;
+}
+.borderPlaceholder{
+    border-right: 1px grey solid;
+}
+
+/* checkBoxes */
+.checkBoxWrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}

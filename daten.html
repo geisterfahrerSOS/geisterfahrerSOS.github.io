@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wetterstation Daten</title>
+    <link rel="stylesheet" href="style.css" />
+    <script></script>
+  </head>
+  <body>
+    <div class="mainContentWrapper">
+      <div class="header">
+        <div class="navBarWrapper">
+          <div class="nameWrapper">
+            <div class="logo"></div>
+            <div class="name">
+              Wetterstation<br /><span style="font-size: 10px; color: grey;"
+                >By Marco, Max, Lucas and Luca</span
+              >
+            </div>
+          </div>
+          <div class="navBarItems">
+            <div class="navBarItem-1">
+              <a href="about.html">About </a>
+            </div>
+            <div class="navBarItem-2">
+              <a href="daten.html">Daten </a>
+            </div>
+            <div class="navBarItem-3">
+              <a href="sensors.html">Sensors </a>
+            </div>
+            <div class="navBarItem-4">
+              <a href="project.html">Project </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="main">
+          <div class="mainContent">
+            <h1>Wetterdaten</h1>
+            <div class="dataSettingsTop">
+              <div class="datePeriod">Mon, 07 Juni 2020</div>
+              <div class="changeDateWrapper">
+                <div class="changeDateLeftWrapper">
+                  <div class="changeDateLeft">links</div>
+                </div>
+                <div class="changeDateRightWrapper">
+                  <div class="changeDateRight">rechts</div>
+                </div>
+              </div>
+              <div class="timeFrameSwitch">
+                <div class="daySwitchWrapper">
+                  <div class="daySwitch">Tage</div>
+                </div>
+                <div class="weekSwitchWrapper">
+                  <div class="weekSwitch">Wochen</div>
+                </div>
+                <div class="monthSwitchWrapper" style="background-color: grey; color: white;">
+                  <div class="monthSwitch">Monate</div>
+                </div>
+              </div>
+              <div class="refreshButton" onclick="refresh()">refresh</div>
+            </div>
+            <div class="snapShotWrapper">
+              <div class="snapShotItems">
+                <div class="snapShotItem">
+                  <div class="avgData">22°C</div>
+                  <div class="dataType">Temperatur</div>
+                </div>
+                <div class="borderPlaceholder"></div>
+                <div class="snapShotItem">
+                  <div class="avgData">82%</div>
+                  <div class="dataType">Luftfeuchtigkeit</div>
+                </div>
+                <div class="borderPlaceholder"></div>
+                <div class="snapShotItem">
+                  <div class="avgData">11 Km/h</div>
+                  <div class="dataType">Windgeschwindigkeit</div>
+                </div>
+                <div class="borderPlaceholder"></div>
+                <div class="snapShotItem">
+                  <div class="avgData">225 SW</div>
+                  <div class="dataType">Windrichtung</div>
+                </div>
+              </div>
+            </div>
+            <div class="checkBoxWrapper">
+              <div class="checkTemperature">
+                <input
+                  type="checkbox"
+                  id="temperature"
+                  name="temperature"
+                  value="temperature"
+                />
+                <label for="temperature"> <strong> Temperatur</strong></label>
+              </div>
+              <div class="checkHumidity">
+                <input
+                  type="checkbox"
+                  id="humidity"
+                  name="humidity"
+                  value="humidity"
+                />
+                <label for="humidity">
+                  <strong> Luftfeuchtigkeit</strong></label
+                >
+              </div>
+              <div class="checkWindSpeed">
+                <input
+                  type="checkbox"
+                  id="windspeed"
+                  name="windspeed"
+                  value="windspeed"
+                />
+                <label for="windspeed">
+                  <strong> Windgeschwindigkeit</strong></label
+                >
+              </div>
+              <div class="checkWindDirection">
+                <input
+                  type="checkbox"
+                  id="winddirection"
+                  name="winddirection"
+                  value="winddirection"
+                />
+                <label for="winddirection">
+                  <strong> Windrichtung</strong></label
+                >
+              </div>
+            </div>
+            <div
+              class="chart-container"
+              style="position: relative;"
+            >
+              <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="bottomFooter">
+          <div class="content">
+            <div class="bottomFooterWrapper">
+              <div class="bottomFooterItems">
+                <div class="bottomFooterItem">
+                  <a href="about.html">About </a>
+                </div>
+                <div class="bottomFooterItem">
+                  <a href="daten.html">Daten </a>
+                </div>
+                <div class="bottomFooterItem">
+                  <a href="sensoren.html">Sensoren </a>
+                </div>
+                <div class="bottomFooterItem">
+                  <a href="project.html">Project </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lowerSpaceholder"></div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="main.js"></script>
+</html>
