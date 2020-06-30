@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wetterstation Daten</title>
     <link rel="stylesheet" href="style.css" />
     <script></script>
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+
+</head>
+
+<body>
     <div class="mainContentWrapper">
-      <div class="header">
-        <div class="navBarWrapper">
-          <div class="nameWrapper">
-            <div class="logo"></div>
-            <div class="name">
-              Wetterstation<br /><span style="font-size: 10px; color: grey;"
-                >By Marco, Max, Lucas and Luca</span
+        <div class="header">
+            <div class="navBarWrapper">
+                <div class="nameWrapper">
+                    <div class="logo"></div>
+                    <div class="name">
+                        Wetterstation<br /><span style="font-size: 10px; color: grey;">By Marco, Max, Lucas and Luca</span
               >
             </div>
           </div>
@@ -23,14 +26,14 @@
             <div class="navBarItem-1">
               <a href="about.html">About </a>
             </div>
-            <div class="navBarItem-2">
+            <div class="navBarItem-2" style="border-bottom-color: black;">
               <a href="daten.html">Daten </a>
             </div>
             <div class="navBarItem-3">
-              <a href="sensors.html">Sensors </a>
+              <a href="sensoren.html">Sensors </a>
             </div>
             <div class="navBarItem-4">
-              <a href="project.html">Project </a>
+              <a href="projekt.html">Projekt </a>
             </div>
           </div>
         </div>
@@ -44,10 +47,10 @@
               <div class="datePeriod">Mon, 07 Juni 2020</div>
               <div class="changeDateWrapper">
                 <div class="changeDateLeftWrapper">
-                  <div class="changeDateLeft">links</div>
+                  <div class="changeDateLeft"><i class="fas fa-chevron-left"></i></div>
                 </div>
                 <div class="changeDateRightWrapper">
-                  <div class="changeDateRight">rechts</div>
+                  <div class="changeDateRight"><i class="fas fa-chevron-right"></i></div>
                 </div>
               </div>
               <div class="timeFrameSwitch">
@@ -57,32 +60,50 @@
                 <div class="weekSwitchWrapper">
                   <div class="weekSwitch">Wochen</div>
                 </div>
-                <div class="monthSwitchWrapper" style="background-color: grey; color: white;">
+                <div
+                  class="monthSwitchWrapper"
+                  style="background-color: grey; color: white;"
+                >
                   <div class="monthSwitch">Monate</div>
                 </div>
               </div>
-              <div class="refreshButton" onclick="refresh()">refresh</div>
+
+              <div class="sliderWrapper">
+                <div class="sliderHeaderWrapper">
+                  <div class="sliderHeader">Smoothness:</div>
+                  <div class="sliderValue">10</div>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  value="10"
+                  class="slider"
+                  id="myRange"
+                />
+              </div>
+              <div class="refreshButton" onclick="refresh()"><i class="fas fa-sync"></i></div>
             </div>
             <div class="snapShotWrapper">
               <div class="snapShotItems">
                 <div class="snapShotItem">
                   <div class="avgData">22°C</div>
-                  <div class="dataType">Temperatur</div>
+                  <div class="dataType" style="color: #C53815">Temperatur</div>
                 </div>
                 <div class="borderPlaceholder"></div>
                 <div class="snapShotItem">
                   <div class="avgData">82%</div>
-                  <div class="dataType">Luftfeuchtigkeit</div>
+                  <div class="dataType" style="color: #177469">Luftfeuchtigkeit</div>
                 </div>
                 <div class="borderPlaceholder"></div>
                 <div class="snapShotItem">
                   <div class="avgData">11 Km/h</div>
-                  <div class="dataType">Windgeschwindigkeit</div>
+                  <div class="dataType" style="color: #D39E19">Windgeschwindigkeit</div>
                 </div>
                 <div class="borderPlaceholder"></div>
                 <div class="snapShotItem">
                   <div class="avgData">225 SW</div>
-                  <div class="dataType">Windrichtung</div>
+                  <div class="dataType" style="color: #E26D0D">Windrichtung</div>
                 </div>
               </div>
             </div>
@@ -93,6 +114,7 @@
                   id="temperature"
                   name="temperature"
                   value="temperature"
+                  checked="true"
                 />
                 <label for="temperature"> <strong> Temperatur</strong></label>
               </div>
@@ -102,6 +124,7 @@
                   id="humidity"
                   name="humidity"
                   value="humidity"
+                  checked="true"
                 />
                 <label for="humidity">
                   <strong> Luftfeuchtigkeit</strong></label
@@ -113,6 +136,7 @@
                   id="windspeed"
                   name="windspeed"
                   value="windspeed"
+                  checked="true"
                 />
                 <label for="windspeed">
                   <strong> Windgeschwindigkeit</strong></label
@@ -124,17 +148,20 @@
                   id="winddirection"
                   name="winddirection"
                   value="winddirection"
+                  checked="true"
                 />
                 <label for="winddirection">
                   <strong> Windrichtung</strong></label
                 >
               </div>
             </div>
-            <div
-              class="chart-container"
-              style="position: relative;"
-            >
-              <canvas id="myChart" width="400" height="400"></canvas>
+            <div class="chart-container" style="position: relative;">
+              <div class="myChartDiv">
+                <canvas id="myChart"></canvas>
+              </div>
+              <div class="disclaimer">
+                Die Daten wurden zufällig generiert.
+              </div>
             </div>
           </div>
         </div>
@@ -155,7 +182,7 @@
                   <a href="sensoren.html">Sensoren </a>
                 </div>
                 <div class="bottomFooterItem">
-                  <a href="project.html">Project </a>
+                  <a href="projekt.html">Projekt </a>
                 </div>
               </div>
             </div>
@@ -167,4 +194,5 @@
   </body>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="main.js"></script>
+  <!-- <script src="index.js"></script> -->
 </html>

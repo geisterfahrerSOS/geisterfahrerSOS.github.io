@@ -1,1 +1,24 @@
-slkdkbfvbsdbfbsdbfbsd
+add wrap to settings elements##
+
+bottom nav bar links##
+
+add some better formatting in the graph##
+
+change graph heigt##
+
+snapshot colors and data##
+
+smoothness settings##
+
+x axes formatting##
+
+fontawesome ##
+
+color pallete:##
+#264653 dark blue
+#2A9D8F light blue
+#E9C46A yellow
+#F4A261 orange
+#E76F51 red
+
+°C
