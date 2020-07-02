@@ -1,0 +1,690 @@
+<div class="maxContentWrapper">
+    <p class="c1">
+        <span></span><span class="c11 c19">Serielle Schnittstelle</span
+    ><span class="c0">&nbsp;</span>
+    </p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1"><span class="c5">1.: Aufgabe / Problem</span></p>
+    <p class="c1">
+        <span class="c0">Ich bin f&uuml;r die Kommunikation zwischen Wetterstation und Computer
+      zust&auml;ndig. Also der Zwischenschritt zwischen Luca und Lucas an einem
+      Ende und Marco am anderen Ende.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Dabei sollen die Werte f&uuml;r Temperatur, Windrichtung etc. &uuml;ber
+      die serielle Schnittstelle geschickt werden und dann &uuml;ber ein
+      Processing-Programm als .txt Datei nach Kategorie sortiert abgespeichert
+      werden.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Die H&uuml;rde hierbei ist, dass die Zahlen nicht gleich aufgebaut sind,
+      also unterschiedlich lang sind, manche haben Kommas und andere werden in
+      unterschiedlichen Zeitabst&auml;nden verschickt. Diese einzelnen
+      Kategorien d&uuml;rfen jedoch auf keinen Fall vermischt werden.</span
+    >
+  </p>
+  <p class="c1">
+    <img src="images/pfeilImage.png" alt="" width="100%">
+    </p>
+    <p class="c1"><span class="c5">2.: Konzept / Idee</span></p>
+    <p class="c1">
+        <span class="c0">Bei der &Uuml;bertragung der Daten von der Wetterstation zum Processing
+      Programm m&uuml;ssen die einzelnen Kategorien gut differenziert sein, also
+      entweder durch Kommas oder andere Zeichen getrennt werden. Hierbei muss
+      jedoch zus&auml;tzlich erkennbar sein, um welche Kategorie es sich
+      handelt.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Daher habe ich mir folgende Struktur f&uuml;r den Datenstrom
+      ausgedacht:</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Jeder Zahl wird durch einen Index-Buchstaben einer Kategorie
+      zugeordnet.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c8">Index 1</span><span class="c7">&nbsp;</span
+    ><span class="c9">Zahl 1</span><span class="c7">&nbsp;</span
+    ><span class="c8">Index 2</span><span class="c7">&nbsp;</span
+    ><span class="c9">Zahl 2</span><span class="c7">&nbsp;</span
+    ><span class="c0">&hellip; etc</span>
+    </p>
+    <p class="c1">
+        <span class="c0">Als Datenstrom k&ouml;nnte das folgenderma&szlig;en aussehen:</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c8">a</span><span class="c9">45684568</span
+    ><span class="c8">b</span><span class="c9">1346c2345</span
+    ><span class="c0">&hellip;etc</span>
+    </p>
+    <p class="c1">
+        <span class="c0">Somit k&ouml;nnen die Zahlen jede Form und L&auml;nge besitzen, sogar
+      Kommas, da die Index-Chars ja lediglich Buchstaben sind.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Da der Datenstrom in Form von Char-Variablen in Processing ankommt, muss
+      jetzt eine M&ouml;glichkeit gefunden werden, wie die Chars zu einer
+      gro&szlig;en Zahl zusammengef&uuml;gt werden. Dabei muss die Zahl unter
+      der zugewiesenen Kategorie abgespeichert werden.</span
+    >
+  </p>
+  <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1"><span class="c0">Beispiel:</span></p>
+    <p class="c1">
+        <span>Die Zahlenfolge </span><span class="c8">a</span><span>&nbsp;</span
+    ><span class="c9">1</span><span>&nbsp;</span><span class="c9">2</span
+    ><span>&nbsp;</span><span class="c9">3</span><span>&nbsp;</span
+    ><span class="c8">b</span><span>&nbsp;</span><span class="c9">4</span
+    ><span>&nbsp;</span><span class="c9">6</span><span>&nbsp;</span
+    ><span class="c9">8</span><span>&nbsp;</span><span class="c9">9</span>
+    </p>
+    <p class="c1">
+        <span class="c0">soll so abgespeichert werden:</span>
+    </p>
+    <p class="c1">
+        <span class="c8">a: 123</span><span>&nbsp;</span
+    ><span class="c9">b: 468</span>
+    </p>
+    <p class="c1">
+        <span class="c0">Es sollen also immer P&auml;ckchen aus dem Datenstrom geschn&uuml;rt
+      werden. Sobald ein neuer Index-Buchstaben ankommt, wird das kleine
+      P&auml;ckchen unter dem letzten Indexbuchstabe abgespeichert und ein Neues
+      unter dem neuen Index-Buchstabe angefangen.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Am Schluss sollen diese P&auml;ckchen als .txt Datei mit der Zeit, die
+      seit &Uuml;bertragungsbeginn vergangen ist, abgespeichert werden.</span
+    >
+  </p>
+  <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1">
+        <span class="c5">3.: H&uuml;rden und Schritte</span>
+    </p>
+    <p class="c1">
+        <span class="c0">Als erstes musste ich testen, wie genau die Daten in Processing ankommen.
+      Daf&uuml;r braucht man die Bibliothek
+      &bdquo;processing.serial&ldquo;.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Da man Daten der Seriellen Schnittstelle in unterschiedlichster Form
+      verschicken kann, habe ich es als erstes mit String-Variablen versucht.
+      Dabei gab es jedoch viele Probleme und Fehler, die sich kaum beheben
+      lie&szlig;en. Deshalb wird die &Uuml;bertragung in Chars verrichtet.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Dies sind meine beiden grundlegenden Kommunikation-Seiten:</span
+    >
+  </p>
+  <a id="t.feb15747065e2ed1a2b109c58527b08eda9bab5d"></a><a id="t.0"></a>
+  <table class="c20">
+    <tbody>
+      <tr class="c4">
+        <td class="c12" colspan="1" rowspan="1">
+          <p class="c6">
+            <span class="c0"
+              >Arduino &ndash;
+              Verschicken&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+            >
+          </p>
+        </td>
+        <td class="c12" colspan="1" rowspan="1">
+          <p class="c6">
+            <span class="c0">Processing &ndash; Empfangen</span>
+    </p>
+    </td>
+    </tr>
+    <tr class="c21">
+        <td class="c13" colspan="1" rowspan="1">
+            <p class="c6">
+                <span style="
+                overflow: hidden;
+                display: inline-block;
+                margin: 0px 0px;
+                border: 0px solid #000000;
+                transform: rotate(0rad) translateZ(0px);
+                -webkit-transform: rotate(0rad) translateZ(0px);
+                width: 159px;
+                height: 72px;
+              "><img
+                alt=""
+                src="images/image14.png"
+                style="
+                  width: 159px;
+                  height: 72px;
+                  margin-left: 0px;
+                  margin-top: 0px;
+                  transform: rotate(0rad) translateZ(0px);
+                  -webkit-transform: rotate(0rad) translateZ(0px);
+                "
+                title=""
+            /></span>
+            </p>
+        </td>
+        <td class="c13" colspan="1" rowspan="1">
+            <p class="c6">
+                <span style="
+                overflow: hidden;
+                display: inline-block;
+                margin: 0px 0px;
+                border: 0px solid #000000;
+                transform: rotate(0rad) translateZ(0px);
+                -webkit-transform: rotate(0rad) translateZ(0px);
+                width: 253px;
+                height: 85.93px;
+              "><img
+                alt=""
+                src="images/image4.png"
+                style="
+                  width: 253px;
+                  height: 85.93px;
+                  margin-left: 0px;
+                  margin-top: 0px;
+                  transform: rotate(0rad) translateZ(0px);
+                  -webkit-transform: rotate(0rad) translateZ(0px);
+                "
+                title=""
+            /></span>
+            </p>
+        </td>
+    </tr>
+    </tbody>
+    </table>
+    <p class="c1">
+        <span class="c0">Sobald die Verbindung aufgebaut ist, und &bdquo;h&ldquo; als Index
+      f&uuml;r den Start empfangen wurde, beginnt sowohl das Werteschicken in
+      der loop Schleife von Arduino, als auch das weitere Empfangen von Daten
+      auf der Processing Seite durch &bdquo;startWrite&ldquo;.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Dieses Startsignal verhindert auch weitgehend Fehler ganz am Anfang der
+      &Uuml;bertragung.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Da das Empfangen der Daten &uuml;ber Processing die wesentlich
+      gr&ouml;&szlig;ere H&uuml;rde darstellt, generiere ich &uuml;ber Arduino
+      lediglich zuf&auml;llig generierte Werte mit zuf&auml;lligen
+      Zeitabschnitten, die die Daten der Wetterstation simulieren sollen:</span
+    >
+  </p>
+  <p class="c1">
+    <span
+      style="
+        overflow: hidden;
+        display: inline-block;
+        margin: 0px 0px;
+        border: 1px solid #000000;
+        transform: rotate(0rad) translateZ(0px);
+        -webkit-transform: rotate(0rad) translateZ(0px);
+        width: 246px;
+        height: 208px;
+      "
+      ><img
+        alt=""
+        src="images/image2.png"
+        style="
+          width: 246px;
+          height: 208px;
+          margin-left: 0px;
+          margin-top: 0px;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+        "
+        title=""
+    /></span>
+    </p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1">
+        <span class="c0">In Processing kommen diese Zahlen und Buchstaben als Chars an. Diese
+      hei&szlig;en &bdquo;newChar&ldquo;.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Nun soll als erstes gepr&uuml;ft werden, ob es sich um einen
+      Index-Buchstaben oder um eine Werte-Ziffer handelt:</span
+    >
+  </p>
+  <p class="c1">
+    <span
+      style="
+        overflow: hidden;
+        display: inline-block;
+        margin: 0px 0px;
+        border: 1px solid #000000;
+        transform: rotate(0rad) translateZ(0px);
+        -webkit-transform: rotate(0rad) translateZ(0px);
+        width: 539px;
+        height: 17px;
+      "
+      ><img
+        alt=""
+        src="images/image5.png"
+        style="
+          width: 539px;
+          height: 17px;
+          margin-left: 0px;
+          margin-top: 0px;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+        "
+        title=""
+    /></span>
+    </p>
+    <p class="c1">
+        <span class="c0">Anhand dieser Unterscheidung ergeben sich folgende Schritte:</span
+    >
+  </p>
+  <a id="t.262da8ad1c63c3c705f01ec10072bb92d8be0d9d"></a><a id="t.1"></a>
+  <table class="c20">
+    <tbody>
+      <tr class="c4">
+        <td class="c14 c22" colspan="1" rowspan="1">
+          <p class="c6">
+            <span class="c0">Art der &bdquo;newChar&ldquo;-Variable</span>
+    </p>
+    </td>
+    <td class="c10 c14" colspan="1" rowspan="1">
+        <p class="c6"><span class="c0">Werte-Ziffer</span></p>
+    </td>
+    <td class="c10 c14" colspan="1" rowspan="1">
+        <p class="c6">
+            <span class="c0">Index-Buchstabe</span>
+        </p>
+    </td>
+    </tr>
+    <tr class="c4">
+        <td class="c17" colspan="1" rowspan="1">
+            <p class="c6">
+                <span class="c0">Kurzfristiger Speicherort</span>
+            </p>
+        </td>
+        <td class="c10" colspan="1" rowspan="1">
+            <p class="c6">
+                <span class="c0">CharArray &bdquo;inVal&ldquo;</span>
+            </p>
+        </td>
+        <td class="c10" colspan="1" rowspan="1">
+            <p class="c6">
+                <span class="c0">Char &bdquo;currentIndex&ldquo;</span>
+            </p>
+        </td>
+    </tr>
+    <tr class="c4">
+        <td class="c17" colspan="1" rowspan="1">
+            <p class="c6">
+                <span class="c0">Weiterer Verlauf</span>
+            </p>
+        </td>
+        <td class="c10" colspan="1" rowspan="1">
+            <p class="c6">
+                <span class="c0">newChar wird durch &bdquo;append&ldquo; zu dem Array
+              hinzugef&uuml;gt.</span
+            >
+          </p>
+          <p class="c6">
+            <span class="c0"
+              >Dieser Array ist nur kurzfristig und wird solange mit Ziffern
+              gef&uuml;llt bis die Zahl komplett ist und abgespeichert
+              wird.</span
+            >
+          </p>
+        </td>
+        <td class="c10" colspan="1" rowspan="1">
+          <p class="c6">
+            <span class="c0"
+              >Neuer String &bdquo;stamp&ldquo; wird erstellt: Dieser beinhaltet
+              Zeit, letzten Index und den &bdquo;inVal&ldquo; array.
+            </span>
+            </p>
+            <p class="c6">
+                <span class="c0">Also ein String, der den letzten Block zusammenfasst.</span
+            >
+          </p>
+          <p class="c6">
+            <span class="c0">&bdquo;inVal&ldquo; wird zur&uuml;ckgesetzt.</span>
+            </p>
+        </td>
+    </tr>
+    </tbody>
+    </table>
+    <p class="c1">
+        <span class="c0">Hierbei bilden die &bdquo;Stamps&ldquo; die Datenp&auml;ckchen, die ich
+      vorhin beschrieben habe. Dies ist eine String-Variable.</span
+    >
+  </p>
+  <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1">
+        <span class="c0">Die Funktion f&uuml;r das Erstellen eines solchen P&auml;ckchens sieht
+      wie folgt aus:</span
+    ><span
+      style="
+        overflow: hidden;
+        display: inline-block;
+        margin: 0px 0px;
+        border: 1px solid #000000;
+        transform: rotate(0rad) translateZ(0px);
+        -webkit-transform: rotate(0rad) translateZ(0px);
+        width: 776.27px;
+        height: 28.67px;
+      "
+      ><img
+        alt=""
+        src="images/image7.png"
+        style="
+          width: 776.27px;
+          height: 28.67px;
+          margin-left: 0px;
+          margin-top: 0px;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+        "
+        title=""
+    /></span>
+    </p>
+    <p class="c1">
+        <span class="c0">Also sind die P&auml;ckchen in den Dateien folgenderma&szlig;en
+      aufgebaut:</span
+    >
+  </p>
+  <p class="c1">
+    <span>&bdquo;</span><span class="c15">Time:</span><span>&ldquo;</span
+    ><span class="c3">Stunden</span><span>:</span><span class="c3">Minuten</span
+    ><span>:</span><span class="c7">Sekunden</span><span>||&ldquo;</span
+    ><span class="c15">index/value</span><span>&ldquo;:</span
+    ><span class="c8">index</span><span>/</span><span class="c9">Zahl</span>
+    </p>
+    <p class="c1">
+        <span class="c0">Hier sind drei &bdquo;Stamps&ldquo; aus dem
+      &bdquo;Timestamps&ldquo;-Array dargestellt:</span
+    >
+  </p>
+  <p class="c1">
+    <span
+      style="
+        overflow: hidden;
+        display: inline-block;
+        margin: 0px 0px;
+        border: 1px solid #000000;
+        transform: rotate(0rad) translateZ(0px);
+        -webkit-transform: rotate(0rad) translateZ(0px);
+        width: 286px;
+        height: 57px;
+      "
+      ><img
+        alt=""
+        src="images/image10.png"
+        style="
+          width: 286px;
+          height: 57px;
+          margin-left: 0px;
+          margin-top: 0px;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+        "
+        title=""
+    /></span>
+    </p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1">
+        <span class="c0">Im Einsatz soll dieses Array aus Strings (&bdquo;Timestamps&ldquo;) ca.
+      im 10-Minutentakt als .txt-Datei abgespeichert werden. Nach der
+      Abspeicherung kann das Array geleert werden, da alle Daten als text Datei
+      abgespeichert sind.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Somit kann das Processing-Programm nahezu unendlich lange laufen, da sich
+      kein Array zu stark bef&uuml;llt und
+      &bdquo;&uuml;berl&auml;uft&ldquo;.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >F&uuml;r einfachere Testverh&auml;ltnisse werden sie bisher jede Minute
+      abgespeichert:</span
+    ><span
+      style="
+        overflow: hidden;
+        display: inline-block;
+        margin: 0px 0px;
+        border: 1px solid #000000;
+        transform: rotate(0rad) translateZ(0px);
+        -webkit-transform: rotate(0rad) translateZ(0px);
+        width: 604.8px;
+        height: 59.27px;
+      "
+      ><img
+        alt=""
+        src="images/image9.png"
+        style="
+          width: 604.8px;
+          height: 59.27px;
+          margin-left: 0px;
+          margin-top: 0px;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+        "
+        title=""
+    /></span>
+    </p>
+    <p class="c1">
+        <span class="c0">Jedes Mal wird eine neue &bdquo;Timestamp&ldquo; &ndash; Datei erstellt,
+      die den Zeitabschnitt nach Start der Daten&uuml;bertragung angibt und die
+      Werte dieses Abschnittes beinhaltet. Diese Dateien werden so erstellt,
+      dass es keinen Datenverlust zwischen den beiden abgespeicherten Dateien
+      gibt.</span
+    >
+  </p>
+  <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1">
+        <span class="c0">Und so sind die Dateinamen aufgebaut:</span>
+    </p>
+    <p class="c1">
+        <span>&bdquo;</span><span class="c15">Timestamp</span><span>&ldquo; </span
+    ><span class="c3">Stunden</span><span>;</span><span class="c3">Minuten</span
+    ><span>;</span><span class="c7">Sekunden</span>
+    </p>
+    <p class="c1">
+        <span style="
+        overflow: hidden;
+        display: inline-block;
+        margin: 0px 0px;
+        border: 1px solid #000000;
+        transform: rotate(0rad) translateZ(0px);
+        -webkit-transform: rotate(0rad) translateZ(0px);
+        width: 356px;
+        height: 61px;
+      "><img
+        alt=""
+        src="images/image13.png"
+        style="
+          width: 356px;
+          height: 61px;
+          margin-left: 0px;
+          margin-top: 0px;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+        "
+        title=""
+    /></span>
+    </p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1">
+        <span class="c0">W&auml;hrend das Abspeichern der Stamps in das Array in der
+      &bdquo;serialEvent&ldquo;-Schleife geschieht, befindet sich die Funktion
+      f&uuml;r das Speichern dieser Arrays als .txt Datei in der Draw-Schleife.
+      Dies macht eine getrennte und verlustfreie Abspeicherung
+      m&ouml;glich.</span
+    >
+  </p>
+  <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1">
+        </span><span style="
+        overflow: hidden;
+        display: inline-block;
+        margin: 0px 0px;
+        border: 1px solid #000000;
+        transform: rotate(0rad) translateZ(0px);
+        -webkit-transform: rotate(0rad) translateZ(0px);
+        width: 306px;
+        height: 147px;
+      "><img
+        alt=""
+        src="images/image1.png"
+        style="
+          width: 306px;
+          height: 147px;
+          margin-left: 0px;
+          margin-top: 0px;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+        "
+        title=""
+    /></span><br><br><br>
+        <span class="c0">Time[] ist hier ein Array, das Frames, Sekunden, Minuten und Stunden
+      beinhaltet.
+    </p>
+    <p class="c1">
+        <span class="c0">Bei jedem Durchlauf der &bdquo;draw&ldquo; Scheife wird die Funktion
+      &bdquo;clock&ldquo; einmal aufgerufen. Durch den geschachtelten internen
+      Z&auml;hler muss keine for-Schleife oder &auml;hnliches benutzt werden,
+      was der Performance zugutekommt.</span
+    >
+  </p>
+  <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1"><span class="c0">&nbsp; </span></p>
+    <p class="c1"><span class="c5">4.: Visualisierung</span></p>
+    <p class="c1">
+        <span class="c0">&nbsp;Zum Schluss will ich noch ein kleines Kontroll-Panel erklären, bei
+      dem man zum einen die &bdquo;Datenst&uuml;cke&ldquo; sehen kann, die
+      gerade reinkommen, und zum anderen den Stamp, der dann im
+      &bdquo;Timestamps&ldquo; &ndash; Array abgespeichert wird.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Da hier recht wenige mathematische &Uuml;berlegungen einflie&szlig;en
+      m&uuml;ssen und es haupts&auml;chlich um ausprobieren geht, werde ich auf
+      den Code auch nicht im Detail eingehen. Der &bdquo;trim&ldquo; Befehl war
+      hier vor allem f&uuml;r die Strings hilfreich, da sonst
+      Zeilenumbr&uuml;che gemacht werden. So kann ich alles in eine Zeile
+      schreiben.</span
+    ><br><br><br><span
+      style="
+        overflow: hidden;
+        display: inline-block;
+        margin: 0px 0px;
+        border: 0px solid #000000;
+        transform: rotate(0rad) translateZ(0px);
+        -webkit-transform: rotate(0rad) translateZ(0px);
+        width: 300px;
+        height: 302.93px;
+      "
+      ><img
+        alt=""
+        src="images/image12.png"
+        style="
+          width: 300px;
+          height: 302.93px;
+          margin-left: 0px;
+          margin-top: 0px;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+        "
+        title=""
+    /></span>
+    </p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1">
+        <span class="c0">Und so sieht dann das kleine Panel aus.</span>
+    </p>
+    <p class="c1">
+        <span class="c0">Dies soll jedoch nicht die finale Darstellung der Daten sein, sondern
+      lediglich eine Art Zwischenüberwachung. Marco ist f&uuml;r die
+      weitere Visualisierung und Verarbeitung der Daten zust&auml;ndig.</span
+    >
+  </p>
+  <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1">
+        <span style="
+        overflow: hidden;
+        display: inline-block;
+        margin: 0px 0px;
+        border: 1px solid #000000;
+        transform: rotate(0rad) translateZ(0px);
+        -webkit-transform: rotate(0rad) translateZ(0px);
+        width: 310px;
+        height: 507px;
+      "><img
+        alt=""
+        src="images/image15.png"
+        style="
+          width: 310px;
+          height: 507px;
+          margin-left: 0px;
+          margin-top: 0px;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+        "
+        title=""
+    /></span><br><br><br>
+        <span class="c11">5.: Probleme / Ausstehende Ziele<br></span
+    >
+    </p>
+    <p class="c1">
+        <span class="c0">Trotz des &bdquo;Startschusses&ldquo; mit dem index &bdquo;h&ldquo;
+      finden sich bei manchen Durchl&auml;ufen in den ersten 2-3 Sekunden
+      doppelt erkannte &bdquo;h&ldquo; Buchstaben. Dies liegt vermutlich an
+      einer leichten Ungenauigkeit beim Start des Signals &uuml;ber die serielle
+      Schnittstelle, da sich dieser Fehler ausschlie&szlig;lich beim Starten des
+      Programms ereignet.</span
+    >
+  </p>
+  <p class="c1 c2"><span class="c0"></span></p>
+    <p class="c1">
+        <span class="c0">Urspr&uuml;nglich hatten wir auch eine &Uuml;bertragung &uuml;ber
+      Bluetooth vor, was jedoch wegfiel, da wir in der Corona Zeit nicht
+      &uuml;ber die daf&uuml;r n&ouml;tigen Mittel verfügten.</span
+    >
+  </p>
+  <p class="c1">
+    <span class="c0"
+      >Trotzdem wurde das gro&szlig;e Ziel der sortierten Abspeicherung des
+      Datenstroms erfolgreich erreicht. Das Programm w&auml;re also bei Bedarf
+      voll funktionsf&auml;hig und einsatzbereit.</span
+    >
+  </p>
+</div>

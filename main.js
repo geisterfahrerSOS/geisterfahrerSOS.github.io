@@ -10,30 +10,41 @@ var myChart = new Chart(ctx, {
     },
 
     options: {
+        legend: {
+            display: false,
+        },
         maintainAspectRatio: false,
         scales: {
-            yAxes: [],
+            yAxes: [{
+                display: false,
+            }],
+            xAxes: [{
+                ticks: {
+                    fontColor: "#CCC",
+                },
+            }, ],
         },
     },
 });
 let dataSets = [{
-        label: "Temperatur",
+        label: "Lufttemperatur",
         yAxisID: "A",
-        // xAxisID: "Z",
         data: [],
         borderColor: "#C53815",
         borderWidth: 2,
         pointRadius: 0,
         fill: false,
+        steppedLine: true,
     },
     {
-        label: "Luftfeuchtigkeit",
+        label: "Rel. Luftfeuchtigkeit",
         yAxisID: "B",
         data: [],
         borderColor: "#177469",
         borderWidth: 2,
         pointRadius: 0,
         fill: false,
+        steppedLine: true,
     },
     {
         label: "Windgeschwindigkeit",
@@ -43,6 +54,7 @@ let dataSets = [{
         borderWidth: 2,
         pointRadius: 0,
         fill: false,
+        steppedLine: true,
     },
     {
         label: "Windrichtung",
@@ -52,6 +64,7 @@ let dataSets = [{
         borderWidth: 2,
         pointRadius: 0,
         fill: false,
+        steppedLine: true,
     },
 ];
 let yAxes = [{
@@ -60,15 +73,12 @@ let yAxes = [{
         position: "left",
         scaleLabel: {
             display: true,
-            labelString: "Grad Celsius",
+            labelString: "Lufttemperatur [°C]",
             fontColor: "#C53815",
         },
         color: "red",
         ticks: {
             fontColor: "#C53815",
-            callback: function(value, index, values) {
-                return value + "°C";
-            },
         },
     },
     {
@@ -77,13 +87,10 @@ let yAxes = [{
         position: "left",
         ticks: {
             fontColor: "#177469",
-            callback: function(value, index, values) {
-                return value + "%";
-            },
         },
         scaleLabel: {
             display: true,
-            labelString: "Prozent Leftfeuchte",
+            labelString: "Rel. Luftfeuchte [%]",
             fontColor: "#177469",
         },
     },
@@ -93,13 +100,11 @@ let yAxes = [{
         position: "right",
         ticks: {
             fontColor: "#D39E19",
-            callback: function(value, index, values) {
-                return value + " km/h";
-            },
+
         },
         scaleLabel: {
             display: true,
-            labelString: "Windgeschwindigkeit",
+            labelString: "Windgeschwindigkeit [km/h]",
             fontColor: "#D39E19",
         },
     },
@@ -110,13 +115,10 @@ let yAxes = [{
         scaleLabel: {
             display: true,
             fontColor: "#E26D0D",
-            labelString: "Windrichtung",
+            labelString: "Windrichtung [°]",
         },
         ticks: {
             fontColor: "#E26D0D",
-            callback: function(value, index, values) {
-                return value + "°";
-            },
         },
     },
 ];
@@ -139,33 +141,25 @@ let smooth = 50;
 let rawData = [];
 let = daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 let d = new Date();
-document.getElementsByClassName("datePeriod")[0].innerHTML =
-    weekDays[d.getDay()] +
-    ", " +
-    d.getDate() +
-    ".  " +
-    monthArray[d.getMonth()] +
-    " " +
-    (1900 + d.getYear());
+
 initListeners();
 getData();
 refresh();
 
-console.log(smoothData([1, 4, 6, 7, 8, 4, 8, 2, 5, 7, 8, 9, 0], 3));
-
 function smoothData(dataArray, smoothness) {
     let backData = [];
-    for (let i = 0; i < dataArray.length - smoothness; i++) {
+    for (let i = 0; i < smoothness; i++) {
+        backData.push(dataArray[i]);
+    }
+    for (let i = smoothness; i < dataArray.length; i++) {
         backData.push(
             dataArray
-            .slice(i, i + smoothness)
+            .slice(i - smoothness, i)
             .reduce((accumulator, currentValue) => accumulator + currentValue) /
             smoothness
         );
     }
-    for (let i = dataArray.length - smoothness; i < dataArray.length; i++) {
-        backData.push(dataArray[i]);
-    }
+    console.log(backData);
     return backData;
 }
 
@@ -177,31 +171,42 @@ function getData() {
     let windDirArray = [];
     for (let i = 0; i < 8760; i++) {
         if (i === 0) {
-            tempArray.push(20 + 5 * (Math.random() - 0.5));
-            humidArray.push(70 + 10 * (Math.random() - 0.5));
-            windArray.push(50 + 4 * (Math.random() - 0.5));
-            windDirArray.push(Math.abs(100 + 30 * (Math.random() - 0.5)) % 360);
+            tempArray.push(Math.round(20 + 5 * (Math.random() - 0.5)));
+            humidArray.push(Math.round(70 + 10 * (Math.random() - 0.5)));
+            windArray.push(Math.round(50 + 4 * (Math.random() - 0.5)));
+            windDirArray.push(Math.round(Math.abs(100 + 30 * (Math.random() - 0.5)) % 360));
         } else {
-            tempArray.push(tempArray[i - 1] + 2 * (Math.random() - 0.5));
-            humidArray.push(humidArray[i - 1] + 10 * (Math.random() - 0.5));
-            windArray.push(windArray[i - 1] + 5 * (Math.random() - 0.5));
-            windDirArray.push(
-                Math.abs(windDirArray[i - 1] + 20 * (Math.random() - 0.5)) % 360
-            );
+            tempArray.push(Math.round(tempArray[i - 1] + 2 * (Math.random() - 0.5)));
+            humidArray.push(Math.round(humidArray[i - 1] + 10 * (Math.random() - 0.5)));
+            windArray.push(Math.round(windArray[i - 1] + 5 * (Math.random() - 0.5)));
+            windDirArray.push(Math.round(Math.abs(windDirArray[i - 1] + 20 * (Math.random() - 0.5)) % 360));
         }
     }
     rawData.push(tempArray);
     rawData.push(humidArray);
     rawData.push(windArray);
     rawData.push(windDirArray);
+    console.log(tempArray);
     dataSets[0].data = tempArray;
     dataSets[1].data = humidArray;
     dataSets[2].data = windArray;
     dataSets[3].data = windDirArray;
+    //All Data will be floored
+    // dataSets.map(item => item.map(item => Math.floor(item)));
 }
 
 function initListeners() {
     // Initializing datePeriod
+    document.getElementsByClassName("datePeriod")[0].innerHTML =
+        weekDays[d.getDay()] +
+        ", " +
+        d.getDate() +
+        ".  " +
+        monthArray[d.getMonth()] +
+        " " +
+        (1900 + d.getYear());
+
+    //Slider for smoothing
     let slider = document.getElementById("myRange");
     let sliderOutput = document.getElementsByClassName("sliderValue")[0];
     slider.oninput = function() {
@@ -451,6 +456,10 @@ function initListeners() {
 }
 
 function getSelection() {
+    // Stepped
+    let steppedValue = document.getElementsByClassName("steppedWrapper")[0]
+        .childNodes[1].checked;
+    //Datasets
     let checkBoxes = document.getElementsByClassName("checkBoxWrapper")[0]
         .childNodes;
     let checkBoxValues = [];
@@ -478,6 +487,7 @@ function getSelection() {
     return {
         checkBoxValues: checkBoxValues,
         timeFrameValue: timeFrameValue,
+        stepped: steppedValue,
     };
 }
 
@@ -493,6 +503,7 @@ function daysYearToDate() {
 function graphEditor(selection) {
     // Different Datasets´
     //Getting slice values; hours since beginning of the year; zero is Jan 1 2020
+
     let sliceObj = {
         start: 0,
         end: 10,
@@ -560,6 +571,14 @@ function graphEditor(selection) {
             myChart.data.datasets.push(dataSets[i]);
         }
     }
+    //Stepped
+    if (selection.stepped) {
+        myChart.data.datasets.forEach(item => item.steppedLine = true);
+        console.log("stepped: true");
+    } else {
+        myChart.data.datasets.forEach(item => item.steppedLine = false);
+        console.log("stepped: false");
+    }
     // Labels
     while (myChart.data.labels.length > 0) {
         myChart.data.labels.pop();
@@ -579,6 +598,8 @@ function graphEditor(selection) {
                 //change Date depending on month
                 myChart.data.labels.push(weekDays[Math.floor(i / 24)]);
             }
+            console.log(myChart.data.labels);
+            console.log(dataSets[0]);
             break;
         case 2:
             for (let i = 1; i < 24 * daysInMonth[d.getMonth()]; i++) {
@@ -614,15 +635,27 @@ function refresh() {
             datasets: [],
         },
         options: {
+            legend: {
+                display: false,
+            },
             scales: {
-                yAxes: [],
+                yAxes: [{
+                    display: false,
+                }],
                 xAxes: [{
                     ticks: {
-                        autoSkipPadding: 38,
-                    }
-                }]
+                        fontColor: "#CCC",
+                        autoSkipPadding: 90,
+                    },
+                    scaleLabel: {
+                        display: true,
+                        fontColor: "#CCC",
+                        labelString: "Zeit",
+                    },
+                }, ],
             },
         },
     });
     graphEditor(getSelection());
+    console.log(myChart);
 }

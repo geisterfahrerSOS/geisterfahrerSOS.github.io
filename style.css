@@ -373,6 +373,12 @@ body {
 
 /* snapshot */
 
+.snapShotTitle {
+    font-size: large;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 .snapShotWrapper {
     padding-top: 15px;
 }
@@ -411,5 +417,45 @@ body {
 }
 
 .disclaimer {
+    margin-top: 30px;
     text-align: center;
+}
+
+
+/* projekt */
+
+.maxContentWrapper {
+    width: 70%;
+}
+
+.marcoContentWrapper {
+    width: 70%;
+}
+
+.projektChooser {
+    z-index: 1;
+    /* position: fixed; */
+    background-color: #444;
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    font-size: medium;
+    padding: 0px 0px 20px 0px;
+    border-bottom: solid grey 1px;
+    margin-bottom: 30px;
+}
+
+.projektChooser>div {
+    border-bottom: 2px solid;
+    border-color: transparent;
+    transition: 0.3s;
+    user-select: none;
+}
+
+.projektChooser>div:hover {
+    border-bottom-color: white;
+}
+
+.projektContent {
+    margin-top: 50px;
 }

@@ -18,7 +18,7 @@
                 <div class="nameWrapper">
                     <div class="logo"></div>
                     <div class="name">
-                        Wetterstation<br /><span style="font-size: 10px; color: grey;">By Marco, Max, Lucas and Luca</span
+                        Wetterstation<br /><span style="font-size: 10px; color: grey;">Von Marco, Max, Lucas and Luca</span
               >
             </div>
           </div>
@@ -30,7 +30,7 @@
               <a href="daten.html">Daten </a>
             </div>
             <div class="navBarItem-3">
-              <a href="sensoren.html">Sensors </a>
+              <a href="sensoren.html">Sensoren </a>
             </div>
             <div class="navBarItem-4">
               <a href="projekt.html">Projekt </a>
@@ -44,7 +44,7 @@
           <div class="mainContent">
             <h1>Wetterdaten</h1>
             <div class="dataSettingsTop">
-              <div class="datePeriod">Mon, 07 Juni 2020</div>
+              <div class="datePeriod"></div>
               <div class="changeDateWrapper">
                 <div class="changeDateLeftWrapper">
                   <div class="changeDateLeft"><i class="fas fa-chevron-left"></i></div>
@@ -82,18 +82,32 @@
                   id="myRange"
                 />
               </div>
+              <div class="steppedWrapper">
+                <input
+                  type="checkbox"
+                  id="stepped"
+                  name="stepped"
+                  value="stepped"
+                />
+                <label for="stepped">
+                  <strong> stepped</strong></label
+                >
+              </div>
               <div class="refreshButton" onclick="refresh()"><i class="fas fa-sync"></i></div>
             </div>
             <div class="snapShotWrapper">
+              <div class="snapShotTitle">
+                Durchschnittswerte im angegebenen Zeitraum
+              </div>
               <div class="snapShotItems">
                 <div class="snapShotItem">
                   <div class="avgData">22°C</div>
-                  <div class="dataType" style="color: #C53815">Temperatur</div>
+                  <div class="dataType" style="color: #C53815">Lufttemperatur</div>
                 </div>
                 <div class="borderPlaceholder"></div>
                 <div class="snapShotItem">
                   <div class="avgData">82%</div>
-                  <div class="dataType" style="color: #177469">Luftfeuchtigkeit</div>
+                  <div class="dataType" style="color: #177469">Rel. Luftfeuchtigkeit</div>
                 </div>
                 <div class="borderPlaceholder"></div>
                 <div class="snapShotItem">
@@ -114,9 +128,9 @@
                   id="temperature"
                   name="temperature"
                   value="temperature"
-                  checked="true"
+                  checked
                 />
-                <label for="temperature"> <strong> Temperatur</strong></label>
+                <label for="temperature"> <strong> Lufttemperatur</strong></label>
               </div>
               <div class="checkHumidity">
                 <input
@@ -124,10 +138,10 @@
                   id="humidity"
                   name="humidity"
                   value="humidity"
-                  checked="true"
+                  checked
                 />
                 <label for="humidity">
-                  <strong> Luftfeuchtigkeit</strong></label
+                  <strong>Rel. Luftfeuchtigkeit</strong></label
                 >
               </div>
               <div class="checkWindSpeed">
@@ -136,7 +150,7 @@
                   id="windspeed"
                   name="windspeed"
                   value="windspeed"
-                  checked="true"
+                  checked
                 />
                 <label for="windspeed">
                   <strong> Windgeschwindigkeit</strong></label
@@ -148,7 +162,7 @@
                   id="winddirection"
                   name="winddirection"
                   value="winddirection"
-                  checked="true"
+                  checked
                 />
                 <label for="winddirection">
                   <strong> Windrichtung</strong></label
@@ -160,7 +174,7 @@
                 <canvas id="myChart"></canvas>
               </div>
               <div class="disclaimer">
-                Die Daten wurden zufällig generiert.
+                Die Daten wurden zufällig generiert (Nur fürs Jahr 2020)
               </div>
             </div>
           </div>
@@ -194,5 +208,4 @@
   </body>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="main.js"></script>
-  <!-- <script src="index.js"></script> -->
 </html>

@@ -1,0 +1,384 @@
+<div class="marcoContentWrapper">
+    <p class="c1"><span class="c11 c19">Informatik Webseite</span></p>
+    <p class="c1 c2"><span class="c6"></span></p>
+    <p class="c1"><span class="c5"><u><b>1.: Das Vorhaben</b></u> </span></p>
+    <p class="c1 c2"><span class="c6"></span></p>
+    <p class="c1">
+        <span>Die Webseite sollte die endg&uuml;ltige </span
+      ><span>Anzeigeplattform</span
+      ><span class="c4"
+        >&nbsp;f&uuml;r unsere Wetterdaten sein. Diese sollte interaktiv und
+        selbsterkl&auml;rend sein. Dazu wollten wir auf der Webseite das
+        Protokoll &uuml;ber das Projekt anzeigen.</span
+      >
+    </p>
+    <p class="c1 c2"><span class="c4"></span></p>
+    <p class="c1"><span class="c5">2.: Design</span></p>
+    <p class="c1">
+        <span>Ich mag es pers&ouml;nlich wenn eine Webseite &ldquo;clean&rdquo; und
+        minimalistisch ausschaut und den Betrachter nicht mit unn&ouml;tigen
+        Informationen &uuml;berflutet. Deswegen habe ich mich f&uuml;r ein ein
+        Farben Design mit verschiedenen Schwarzt&ouml;nen entschieden.
+        Au&szlig;erdem habe ich darauf geachtet dass der </span
+      ><span>Designstil</span
+      ><span class="c4"
+        >&nbsp;gleich bleibt und z.B. die Buttons gleich aussehen.
+      </span>
+    </p>
+    <p class="c1">
+        <span class="c4">Dazu habe ich, wo es nur geht, kleine Animationen bei den Buttons usw.
+        angewendet damit die Webseite etwas lebendiger wirkt und nicht nur starr
+        etwas anzeigt.</span
+      >
+    </p>
+    <p class="c1 c2"><span class="c6"></span></p>
+    <p class="c1"><span class="c5">3.HTML/CSS</span></p>
+    <p class="c1">
+        <span class="c4">Ich hatte zuvor zwar schon etwas HTML/CSS erfahrung doch habe ich durch
+        ein paar Projekte viele neue Tipps und tricks gelernt.
+      </span>
+    </p>
+    <p class="c1">
+        <span class="c4">Das wichtigste beim Webseiten bauen ist, dass man nie genug &lt;div&gt;
+        tags haben kann :-)</span
+      >
+    </p>
+    <p class="c1">
+      <span class="c4"
+        >Da kann es schon mal passieren dass einem die Namen ausgehen sodass man
+        nur wrapper hinschreibt.</span
+      >
+    </p>
+    <p class="c1">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 206.67px;
+        "
+        ><img
+          alt=""
+          src="marcoProjekt/images/image5.png"
+          style="
+            width: 601.7px;
+            height: 206.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c1">
+        <span class="c4">Auch habe ich gelernt dass man durch die Verwendung von classes anstatt
+        id&rsquo;s, viel mehr M&ouml;glichkeiten beim Anwenden von styles hat.
+        Dadurch kann man mehrere CSS style Elemente auf einen &lt;div&gt; Tag
+        anwenden und man kann viel einfacher kleine Animationen
+        einf&uuml;gen.</span
+      >
+    </p>
+    <p class="c1">
+      <span class="c4"
+        >F&uuml;r kleine Icons habe ich font-awesome verwendet, welches man im
+        header ganz einfach einbetten kann. Jetzt kann man durch den
+        &lt;i&gt;&lt;/i&gt; tag und einer bestimmter class ganz einfach icons
+        einf&uuml;gen.</span
+      >
+    </p>
+    <p class="c1">
+      <span class="c4"
+        >Sehr gutes Tools in CSS sind flex und grid, welche einem ganz einfach
+        erm&ouml;glichen Elemente nebeneinander zu platzieren oder sie in einem
+        Grid einzuordnen. Diese Features habe ich oft verwendet und haben mich
+        vor aufwendiger rechnerei mit margins und paddings gerettet.</span
+      >
+    </p>
+    <p class="c1">
+      <span class="c4"
+        >Auch ist es Sinnvoll in Zukunft eine globale und mehrere private .css
+        files f&uuml;r jede Seite zu haben, damit einem die Namen nicht ausgehen
+        oder man zwei gleiche &ldquo;Variablen&rdquo; hat.</span
+      >
+    </p>
+    <p class="c1 c2"><span class="c4"></span></p>
+    <p class="c1 c2"><span class="c4"></span></p>
+    <p class="c1"><span class="c5">4.JavaScript</span></p>
+    <p class="c1"><span><b>Die Webseite zum Leben erwecken</b></span></p>
+    <p class="c1">
+        <span class="c4">JS habe ich nat&uuml;rlich haupts&auml;chlich f&uuml;r die daten.html
+        Seite benutzt. jedoch habe ich sie auch in der Projekt Seite benutzt.
+      </span>
+    </p>
+    <p class="c1">
+        <span class="c4">JS l&auml;uft auf einer Webseite nur einmal ab, l&auml;uft also nicht
+        in einer Loop wie Processing oder Arduino es machen. Das bedeutet dass
+        man oft Funktionen gegenseitig aufrufen muss.</span
+      >
+    </p>
+    <p class="c1">
+      <span>Au&szlig;erdem ist </span><span>JS</span
+      ><span class="c4"
+        >&nbsp;sehr Objektbasiert, was hei&szlig;t dass die Daten nicht nur als
+        Array und Zahl gespeichert werden, sondern als komplexe Objektstrukturen
+        welche Funktionen auch wie eine Variable behandeln.</span
+      >
+    </p>
+    <p class="c1"><span class="c0"><b>XML Request</b></span></p>
+    <p class="c1">
+        <span>Der Text den Sie gerade lesen befindet sich nicht auf projekt.html
+        sondern wurde per </span
+      ><span>XML Request</span
+      ><span class="c4"
+        >&nbsp;mit JS vom Server aufgerufen. Dabei ist ein XML Request in
+        zweierlei Hinsicht interessant:<br><br><br></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 361.5px;
+          height: 532px;
+        "
+        ><img
+          alt=""
+          src="marcoProjekt/images/image2.png"
+          style="
+            width: 361.5px;
+            height: 532px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c1">
+        <span class="c4">Einerseits kann man einen XML Request vom Server anfordern ohne dass
+        die Seite neu laden muss. Das ist vor allem f&uuml;r einen guten user
+        experience wichtig und man muss nicht alle daten die man anzeigen
+        k&ouml;nnte beim ersten Seitenaufruf sofort herunterladen, sondern sie
+        k&ouml;nnen je nach Bedarf angefordert werden.</span
+      >
+    </p>
+    <p class="c1">
+      <span class="c4"
+        >Andererseits funktioniert ein XML Request asynchron, was bedeutet dass
+        man im Hintergrund noch andere Dinge ablaufen lassen kann. Davon habe
+        ich bei dieser Webseite keinen Gebrauch gemacht.
+      </span>
+    </p>
+    <p class="c1">
+        <span>Bei der Webseite habe ich den XML Request f&uuml;r projekt.html benutzt
+        um schnell zwischen den Projekt Teilst&uuml;cken zu wechseln. Dabei war
+        interessant, dass die XML Requests nicht in der Reihenfolge
+        zur&uuml;ckkamen wie man sie </span
+      ><span>anforderte</span
+      ><span class="c4"
+        >, was an der asynchronit&auml;t liegt. Das bedeutete dass ich die
+        Requests mit einer Index versehen musste mit der ich sie nachher wieder
+        sortiert habe.</span
+      >
+    </p>
+    <p class="c1"><span class="c0"><b>Verbinden von HTML mit JS</b></span></p>
+    <p class="c1">
+        <span class="c4">Ein wichtiger Teil von JS auf einer Webseite ist das zuordnen von HTML
+        an eine JS variable. Diese kann man dann nachher nach belieben
+        &auml;ndern. Dabei kann man wie CSS den style oder wie HTML den inneren
+        Text ver&auml;ndern.
+      </span>
+    </p>
+    <p class="c1">
+        <span class="c4">Das &ldquo;aufsp&uuml;ren&rdquo; von HTML elementen geht immer wie
+        folgt:</span
+      >
+    </p>
+    <p class="c1">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 539px;
+          height: 26px;
+        "
+        ><img
+          alt=""
+          src="marcoProjekt/images/image3.png"
+          style="
+            width: 539px;
+            height: 26px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c1">
+        <span>Die Null am Ende ist da, weil das zuvor vom Typ Array ist und alle
+        Elemente mit der class &ldquo;</span
+      ><span>myElement</span><span class="c4">&rdquo; zur&uuml;ckgibt.</span>
+    </p>
+    <p class="c1">
+        <span>Um sich weiter durch den Elementbaum &ldquo;durchzuk&auml;mpfen&rdquo;
+        benutzt man meist .childNodes , welche auch ein Array an elementen
+        zur&uuml;ckgeben. Es gibt auch weitere funktionen die man zum suchen von
+        HTML Elementen benutzen kann aber das waren die, die man am meisten </span
+      ><span>benutzt</span><span class="c4">.</span>
+    </p>
+    <p class="c1 c2"><span class="c4"></span></p>
+    <p class="c1"><span class="c0"><b>Eventlisteners</b></span></p>
+    <p class="c1">
+        <span class="c4">F&uuml;r die Webseite habe ich bei den Wetterdaten eigene custom
+        Buttons gemacht, weil sie besser aussehen als die default HTML Buttons.
+        In JS habe ich sie einer Variable zugeordnet:</span
+      >
+    </p>
+    <p class="c1">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 428px;
+        "
+        ><img
+          alt=""
+          src="marcoProjekt/images/image4.png"
+          style="
+            width: 601.7px;
+            height: 428px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c1">
+        <span>Weiter unten im Code kann man sehen, dass ich dieser Variable einen </span
+      ><span>Eventlistener</span
+      ><span class="c4"
+        >&nbsp;hinzugef&uuml;gt habe. Der Eventlistener nimmt zwei
+        parameter:</span
+      >
+    </p>
+    <p class="c1">
+      <span class="c4"
+        >Der eine entscheidet nach was der Listener h&ouml;ren soll, also auf
+        einen click, einem mouseover usw. Die andere ist die Funktion die sofort
+        aufgerufen wird sobald der Listener ausgel&ouml;st wird.</span
+      >
+    </p>
+    <p class="c1">
+      <span class="c4"
+        >Im konkreten Fall wird die Hintergrund- und Schriftfarbe des Buttons
+        ver&auml;ndert.
+      </span>
+    </p>
+    <p class="c1">
+        <span class="c4">Sobald der user der refresh Button clicked wird eine Funktion
+        aufgerufen welche abfragt welche Farbe der Button hat und somit die
+        Information &uuml;ber den Zustand des Buttons erh&auml;lt.
+      </span>
+    </p>
+    <p class="c1"><span class="c0"><b>Controlpanel</b></span></p>
+    <p class="c1">
+        <span>Bei der Seite mit den Wetterdaten ist der Controlpanel der Ort an dem
+        der user Parameter zur Untersuchung der Daten eingeben kann. Beim
+        anklicken des refresh Buttons werden die ausgew&auml;hlten Parameter als
+        Objekt der Funktion </span
+      ><i>graphEditor(selection)</i><span class="c4">&nbsp;&uuml;bergeben.</span>
+    </p>
+    <p class="c1">
+        <span style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 482.5px;
+          height: 124.73px;
+        "><img
+          alt=""
+          src="marcoProjekt/images/image1.png"
+          style="
+            width: 482.5px;
+            height: 124.73px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c1">
+        <span>Die Funktion </span><i>graphEditor(selection</i>)<span class="c4">&nbsp;benutzt diese Daten um die richtigen Wetterdaten anzuzeigen.
+        Dabei wird nur der Teil der Gesamten Wetterdaten dem Graphen
+        &uuml;bergeben welcher der user ausgew&auml;hlt hat.</span
+      >
+    </p>
+    <p class="c1"><span class="c0"><b>Chart.js</b></span></p>
+    <p class="c1">
+        <span class="c4">Das ist eine JS Library die ich &uuml;ber cdn.jsdelivr.net eingebunden
+        habe. Mit dem HTML Element Canvas und JS kann man damit seine Daten sehr
+        gut visualisieren. Dabei besitzt die Library endlos viele
+        m&ouml;glichkeiten der Anpassung. Das sehr komplizierte myChart Objekt
+        besitzt dabei alle Informationen &uuml;ber den Graphen und seine
+        Daten.</span
+      >
+    </p>
+    <p class="c1">
+      <span>Wenn man Ctrl + Shift + I dr&uuml;ckt im Browser und die </span
+      ><span>Console</span><span>&nbsp;</span><span>anclicked</span
+      ><span class="c4">&nbsp;kann man sich das Objekt genauer ansehen.</span>
+    </p>
+    <p class="c1">
+        <span class="c4">Die Daten werden auf der X und Y achse als Array &uuml;bergeben und die
+        Library zeichnet automatisch die Linie. Doch f&uuml;r
+        Achsenbeschriftungen und einen Graphen refresh muss man das myChart
+        Objekt in JS bearbeiten. Dabei hatte ich oft Probleme manche features zu
+        kreieren, da die Dokumentation bei machen Dingen etwas ungenau
+        war.</span
+      >
+    </p>
+    <p class="c1"><span class="c0"><b>Date()</b></span></p>
+    <p class="c1">
+        <span class="c4">F&uuml;r den Umgang mit der Zeit im Controlpanel sollte ich
+        urspr&uuml;nglich eine Funktion schreiben die Wochentage, Daten und
+        Monate inkrementieren kann. Doch dann stie&szlig; ich auf die Eingebaute
+        Date() Library welche alles automatisch machte und das aktuelle Datum
+        anzeigt. Das im zusammenspiel mit dem Controlpanel macht es das
+        Ausw&auml;hlen von Daten sehr leicht.</span
+      >
+    </p>
+    <p class="c1 c2"><span class="c4"></span></p>
+    <p class="c1"><span class="c5">5.Ver&ouml;ffentlichung</span></p>
+    <p class="c1">
+        <span>Die Webseite konnte ich sehr leicht &uuml;ber GitHub Pages
+        ver&ouml;ffentlichen, weil ich sowieso schon alles in einer GitHub
+        Repository gespeichert hatte.</span
+      >
+    </p>
+</div>
