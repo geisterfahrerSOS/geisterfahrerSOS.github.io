@@ -18,7 +18,7 @@
                 <div class="nameWrapper">
                     <div class="logo"></div>
                     <div class="name">
-                        Wetterstation<br /><span style="font-size: 10px; color: grey;">Von Marco, Max, Lucas and Luca</span
+                        {Wetterstation}<br /><span style="font-size: 10px; color: grey;">Von Marco, Max, Lucas and Luca</span
               >
             </div>
           </div>
@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <div class="content">
+      <div class="content datenContent">
         <div class="main">
           <div class="mainContent">
             <h1>Wetterdaten</h1>
@@ -130,7 +130,7 @@
                   value="temperature"
                   checked
                 />
-                <label for="temperature"> <strong> Lufttemperatur</strong></label>
+                <label for="temperature"> <strong><span style="font-size: 14px;">Lufttemperatur</span></strong></label>
               </div>
               <div class="checkHumidity">
                 <input
@@ -141,7 +141,7 @@
                   checked
                 />
                 <label for="humidity">
-                  <strong>Rel. Luftfeuchtigkeit</strong></label
+                  <strong><span style="font-size: 14px;">Rel. Luftfeuchtigkeit</span></strong></label
                 >
               </div>
               <div class="checkWindSpeed">
@@ -153,7 +153,7 @@
                   checked
                 />
                 <label for="windspeed">
-                  <strong> Windgeschwindigkeit</strong></label
+                  <strong><span style="font-size: 14px;">Windgeschwindigkeit</span></strong></label
                 >
               </div>
               <div class="checkWindDirection">
@@ -165,7 +165,7 @@
                   checked
                 />
                 <label for="winddirection">
-                  <strong> Windrichtung</strong></label
+                  <strong><span style="font-size: 14px;">Windrichtung </span></strong></label
                 >
               </div>
             </div>
@@ -207,5 +207,5 @@
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="main.js"></script>
+  <script src="daten/main.js"></script>
 </html>

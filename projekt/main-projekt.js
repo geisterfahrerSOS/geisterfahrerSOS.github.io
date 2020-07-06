@@ -54,7 +54,7 @@ console.log(chooserChildren);
 for (let item of chooserChildren) {
     item.addEventListener("click", function() {
         for (let item of chooserChildren) {
-            item.style.borderColor = "transparent";
+            item.style.borderColor = "grey";
         }
         console.log(item);
         item.style.borderColor = "white";

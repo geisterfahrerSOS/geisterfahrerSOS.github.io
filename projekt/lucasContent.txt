@@ -1,1 +1,26 @@
-Lucas Content
+<div class="lucasContentWrapper">
+    <p class="c1">
+        <span></span><span class="c11 c19">Datensammlung</span
+    ><span class="c0">&nbsp;</span>
+    </p><br>
+    <p class="c1"><span class="c5">1.:Probleme</span></p>
+  <div>
+    Es gab immer wieder Probleme mit der Zeit, da wir mit Sensoren noch nie
+    gearbeitet haben und uns nach und nach alles erarbeiten mussten. Die ersten
+    Probleme gab es bei den Sensoren, welche keine Daten oder die falschen Daten
+    ausgesendet haben. Dies konnte man aber mit der Zeit beheben, nachdem wir
+    einen neuen Luftfeuchtigkeitssensor bekommen haben. Der Temperatursensor hat
+    weiterhin falsche Daten ausgesendet, welche aber später behoben wurden. Max
+    hatte derweilen Probleme mit der seriellen Schnittstelle, aber die macht oft
+    Probleme. Es ist schwer Processing und Arduino zu verbinden, aber Max hat es
+    trotzdem gemeistert. Die Schaltung, welche wir von unserer Lehrerin bekommen
+    haben, war sehr verzweigt und es gab Probleme die immer nachzuvollziehen,
+    aber mit dem Programm ging es dann schon, da die Schaltung damit kompatibel
+    ist. Wir mussten nur aufpassen, dass keine Kabel aus dem Microcontroller
+    rausgehen. Im März kam dann langsam Corona und der Unterricht ist für dieses
+    Halbjahr komplett ausgefallen. Durch die Beschränkungen konnte man sich
+    nicht treffen und weiter daran arbeiten und somit war jeder auf sich
+    gestellt. Wir haben uns immerhin über Medien verständigen können und unser
+    Projekt weiter ausbauen können.
+  </div>
+</div>

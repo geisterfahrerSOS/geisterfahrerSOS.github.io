@@ -1,4 +1,7 @@
+
+
 body {
+    zoom: 140%;
     margin: 0px;
     font-family: "Source Code Pro", monospace;
     /* font-family: Arial, Helvetica, sans-serif; */
@@ -78,49 +81,7 @@ body {
 
 .mainContent {
     margin: 10px;
-}
-
-.timeLineWrapper {
-    min-width: 200px;
-    padding: 5px;
-    padding-right: 15px;
-    margin: 10px;
-    flex: 2;
-    position: relative;
-    z-index: -1;
-}
-
-.timelineHeader {
-    font-size: large;
-    padding: 5px;
-}
-
-.leftTopCorner {
-    border-width: 5px 0px 0px 5px;
-    border-color: white;
-    border-style: solid;
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    height: 50px;
-    width: 50px
-}
-
-.rightBottomCorner {
-    transform-origin: bottom right;
-    border-width: 0px 5px 5px 0px;
-    border-color: white;
-    border-style: solid;
-    position: absolute;
-    top: 29%;
-    left: 84%;
-    height: 50px;
-    width: 50px
-}
-
-.timeLineWrapper>ul {
-    margin: 0px;
-    padding-left: 20px;
+    font-size: 14px;
 }
 
 .centerContent {
@@ -164,6 +125,9 @@ body {
 
 .content {
     margin: auto;
+    width: 70%;
+}
+.datenContent{
     width: 80%;
 }
 
@@ -197,14 +161,14 @@ body {
 
 .panelItems {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     row-gap: 30px;
-    column-gap: 30px;
+    border-bottom: 1px solid grey;
 }
 
 .panelItem {
     text-align: left;
+    padding: 10px;
 }
 
 
@@ -440,8 +404,6 @@ body {
     width: 70%;
     justify-content: space-between;
     font-size: medium;
-    padding: 0px 0px 20px 0px;
-    border-bottom: solid grey 1px;
     margin-bottom: 30px;
 }
 
@@ -458,4 +420,12 @@ body {
 
 .projektContent {
     margin-top: 50px;
+}
+
+/* about */
+
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid white;
+    padding: 5px;
 }
