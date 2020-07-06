@@ -30,6 +30,7 @@
   <p class="c1">
     <img src="images/pfeilImage.png" alt="" width="100%">
     </p>
+    <br><br>
     <p class="c1"><span class="c5">2.: Konzept / Idee</span></p>
     <p class="c1">
         <span class="c0">Bei der &Uuml;bertragung der Daten von der Wetterstation zum Processing

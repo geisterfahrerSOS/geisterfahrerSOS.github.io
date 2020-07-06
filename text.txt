@@ -24,11 +24,11 @@ snapshot durchschnitt##
 
 running average backwards##
 
-sensoren
+sensoren##
 
 better random values
 
-add console.log(myChart) for ducomentation
+add console.log(myChart) for ducomentation##
 
 
 color pallete:##

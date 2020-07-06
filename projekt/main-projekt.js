@@ -23,15 +23,12 @@ function getXML(link, index) {
 function sort(array) { //wäre bestimmt auch rekursiv gegangen :-)
     for (let count of array) {
         if (count[1] === 0) {
-            console.log("first");
             sorted.push(count[0]);
             for (let count1 of array) {
                 if (count1[1] === 1) {
-                    console.log("first");
                     sorted.push(count1[0]);
                     for (let count2 of array) {
                         if (count2[1] === 2) {
-                            console.log("first");
                             sorted.push(count2[0]);
                         }
                     }
@@ -50,13 +47,12 @@ chooserChildren.push(
 chooserChildren.push(
     document.getElementsByClassName("projektChooser")[0].childNodes[5]
 );
-console.log(chooserChildren);
+
 for (let item of chooserChildren) {
     item.addEventListener("click", function() {
         for (let item of chooserChildren) {
             item.style.borderColor = "grey";
         }
-        console.log(item);
         item.style.borderColor = "white";
         updateProjekt();
     });
@@ -69,12 +65,9 @@ function updateProjekt() {
             select = i;
         }
     }
-    console.log(sorted);
     document.getElementsByClassName("projektContent")[0].innerHTML =
         sorted[select];
 }
-// document.getElementsByClassName("marcoProjekt")[0].style.borderColor = "orange";
-// console.log(chooserChildren[5].style.borderColor);
 
 
 

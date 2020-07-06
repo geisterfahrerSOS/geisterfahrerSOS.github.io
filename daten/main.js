@@ -159,7 +159,6 @@ function smoothData(dataArray, smoothness) {
             smoothness
         );
     }
-    console.log(backData);
     return backData;
 }
 
@@ -176,9 +175,38 @@ function getData() {
             windArray.push(Math.round(50 + 4 * (Math.random() - 0.5)));
             windDirArray.push(Math.round(Math.abs(100 + 30 * (Math.random() - 0.5)) % 360));
         } else {
-            tempArray.push(Math.round(tempArray[i - 1] + 2 * (Math.random() - 0.5)));
-            humidArray.push(Math.round(humidArray[i - 1] + 10 * (Math.random() - 0.5)));
-            windArray.push(Math.round(windArray[i - 1] + 5 * (Math.random() - 0.5)));
+            let bufferTemp = Math.round(tempArray[i - 1] + 2 * (Math.random() - 0.5));
+            if(bufferTemp > -40){
+                if(bufferTemp < 80){
+                    tempArray.push(bufferTemp);
+                }else{
+                    tempArray.push(tempArray[i - 1] -5)
+                }
+            }else{
+                tempArray.push(tempArray[i - 1] +5);
+            }
+            let bufferHumid = Math.round(humidArray[i - 1] + 10 * (Math.random() - 0.5));
+            if(bufferHumid > 0){
+                if(bufferHumid < 100){
+                    humidArray.push(bufferHumid);
+                }else{
+                    humidArray.push(humidArray[i - 1] -10)
+                }
+                
+            }else{
+                humidArray.push(humidArray[i - 1] + 10);
+            }
+            let bufferWind = Math.round(windArray[i - 1] + 5 * (Math.random() - 0.5));
+            if(bufferWind > 0){
+                if(bufferWind < 100){
+                    windArray.push(bufferWind);
+                }else{
+                    windArray.push(windArray[i - 1] -5)
+                }
+                
+            }else{
+                windArray.push(windArray[i - 1] + 5);
+            }
             windDirArray.push(Math.round(Math.abs(windDirArray[i - 1] + 20 * (Math.random() - 0.5)) % 360));
         }
     }
@@ -186,7 +214,6 @@ function getData() {
     rawData.push(humidArray);
     rawData.push(windArray);
     rawData.push(windDirArray);
-    console.log(tempArray);
     dataSets[0].data = tempArray;
     dataSets[1].data = humidArray;
     dataSets[2].data = windArray;
@@ -340,7 +367,6 @@ function initListeners() {
             document.getElementsByClassName("changeDateWrapper")[0].childNodes[i]
         );
     }
-    console.log(arrows);
     arrows[0].addEventListener("click", (event) => {
         let currentDate;
         switch (getSelection().timeFrameValue) {
@@ -438,7 +464,6 @@ function initListeners() {
                     " " +
                     (1900 + d.getYear());
                 d.setDate(d.getDate() - 7);
-                console.log(currentDate);
                 document.getElementsByClassName(
                     "datePeriod"
                 )[0].innerHTML = currentDate;
@@ -558,7 +583,6 @@ function graphEditor(selection) {
             default:
                 break;
         }
-        console.log(text);
         snapShots[i].childNodes[1].innerHTML = text;
     }
     while (myChart.data.datasets.length > 0) {
@@ -574,10 +598,8 @@ function graphEditor(selection) {
     //Stepped
     if (selection.stepped) {
         myChart.data.datasets.forEach(item => item.steppedLine = true);
-        console.log("stepped: true");
     } else {
         myChart.data.datasets.forEach(item => item.steppedLine = false);
-        console.log("stepped: false");
     }
     // Labels
     while (myChart.data.labels.length > 0) {
@@ -598,8 +620,6 @@ function graphEditor(selection) {
                 //change Date depending on month
                 myChart.data.labels.push(weekDays[Math.floor(i / 24)]);
             }
-            console.log(myChart.data.labels);
-            console.log(dataSets[0]);
             break;
         case 2:
             for (let i = 1; i < 24 * daysInMonth[d.getMonth()]; i++) {
